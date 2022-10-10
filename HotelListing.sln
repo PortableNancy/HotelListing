@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelListing", "HotelListing\HotelListing.csproj", "{CD4FA042-F0BE-4A60-AE71-02EE42B666C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelListing", "HotelListing\HotelListing.csproj", "{CD4FA042-F0BE-4A60-AE71-02EE42B666C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelListing.Domain", "HotelListing.Domain\HotelListing.Domain.csproj", "{B715E9D0-F6A1-4448-AE32-1CA5E6464C95}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelListing.Infrastructure", "HotelListing.Infrastructure\HotelListing.Infrastructure.csproj", "{B805BEE3-0817-4A4B-8A6F-97B346F6ED99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelListing.Core", "HotelListing.Core\HotelListing.Core.csproj", "{72E9B722-7501-4CFB-A9D1-E30A721F3437}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{CD4FA042-F0BE-4A60-AE71-02EE42B666C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD4FA042-F0BE-4A60-AE71-02EE42B666C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD4FA042-F0BE-4A60-AE71-02EE42B666C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B715E9D0-F6A1-4448-AE32-1CA5E6464C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B715E9D0-F6A1-4448-AE32-1CA5E6464C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B715E9D0-F6A1-4448-AE32-1CA5E6464C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B715E9D0-F6A1-4448-AE32-1CA5E6464C95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B805BEE3-0817-4A4B-8A6F-97B346F6ED99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B805BEE3-0817-4A4B-8A6F-97B346F6ED99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B805BEE3-0817-4A4B-8A6F-97B346F6ED99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B805BEE3-0817-4A4B-8A6F-97B346F6ED99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72E9B722-7501-4CFB-A9D1-E30A721F3437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E9B722-7501-4CFB-A9D1-E30A721F3437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E9B722-7501-4CFB-A9D1-E30A721F3437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E9B722-7501-4CFB-A9D1-E30A721F3437}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
