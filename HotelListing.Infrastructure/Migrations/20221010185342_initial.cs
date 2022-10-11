@@ -4,7 +4,7 @@
 
 namespace HotelListing.Infrastructure.Migrations
 {
-    public partial class DatabaseNew : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,6 +30,7 @@ namespace HotelListing.Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Ratings = table.Column<double>(type: "float", nullable: false),
                     CountryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -41,6 +42,28 @@ namespace HotelListing.Infrastructure.Migrations
                         principalTable: "Countries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Countries",
+                columns: new[] { "Id", "Name", "ShortName" },
+                values: new object[,]
+                {
+                    { 1, "Nigeria", "NG" },
+                    { 2, "Ghana", "GH" },
+                    { 3, "Benin", "BJ" },
+                    { 4, "Cameroon", "CM" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Hotels",
+                columns: new[] { "Id", "Address", "CountryId", "Name", "Ratings" },
+                values: new object[,]
+                {
+                    { 1, "Lagos", 1, "Radisson Bleu Anchorage Hotel", 4.0 },
+                    { 2, "Accra", 2, "Alisa Hotel North Ridge", 4.5 },
+                    { 3, "Porto-Novo", 3, "White Horse Hotel Port0-Novo", 4.7000000000000002 },
+                    { 4, "Douala", 4, "K Hotel", 4.9000000000000004 }
                 });
 
             migrationBuilder.CreateIndex(

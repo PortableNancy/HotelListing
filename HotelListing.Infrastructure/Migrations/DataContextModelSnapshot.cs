@@ -87,6 +87,9 @@ namespace HotelListing.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Ratings")
+                        .HasColumnType("float");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CountryId");
@@ -99,40 +102,49 @@ namespace HotelListing.Infrastructure.Migrations
                             Id = 1,
                             Address = "Lagos",
                             CountryId = 1,
-                            Name = "Radisson Bleu Anchorage Hotel"
+                            Name = "Radisson Bleu Anchorage Hotel",
+                            Ratings = 4.0
                         },
                         new
                         {
                             Id = 2,
                             Address = "Accra",
                             CountryId = 2,
-                            Name = "Alisa Hotel North Ridge"
+                            Name = "Alisa Hotel North Ridge",
+                            Ratings = 4.5
                         },
                         new
                         {
                             Id = 3,
                             Address = "Porto-Novo",
                             CountryId = 3,
-                            Name = "White Horse Hotel Port0-Novo"
+                            Name = "White Horse Hotel Port0-Novo",
+                            Ratings = 4.7000000000000002
                         },
                         new
                         {
                             Id = 4,
                             Address = "Douala",
                             CountryId = 4,
-                            Name = "K Hotel"
+                            Name = "K Hotel",
+                            Ratings = 4.9000000000000004
                         });
                 });
 
             modelBuilder.Entity("HotelListing.Domain.Models.Hotel", b =>
                 {
                     b.HasOne("HotelListing.Domain.Models.Country", "Country")
-                        .WithMany()
+                        .WithMany("Hotels")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("HotelListing.Domain.Models.Country", b =>
+                {
+                    b.Navigation("Hotels");
                 });
 #pragma warning restore 612, 618
         }

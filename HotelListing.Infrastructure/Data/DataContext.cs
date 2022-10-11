@@ -9,7 +9,10 @@ namespace HotelListing.Infrastructure.Data
         {
 
         }
-        protected override void  OnModelCreating(ModelBuilder builder)
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Hotel> Hotels { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Country>().HasData(
                 new Country
@@ -51,7 +54,7 @@ namespace HotelListing.Infrastructure.Data
                    Id = 2,
                    Name = "Alisa Hotel North Ridge",
                    Address = "Accra",
-                   Ratings= 4.5,
+                   Ratings = 4.5,
                    CountryId = 2
 
 
@@ -71,12 +74,7 @@ namespace HotelListing.Infrastructure.Data
                    Address = "Douala",
                    Ratings = 4.9,
                    CountryId = 4
-               }); ;
-
+               });
         }
-
-        public DbSet<Country> Countries { get; set; }
-        public DbSet<Hotel> Hotels { get; set;}
-
     }
 }

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelListing.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221007032610_DatabaseNew")]
-    partial class DatabaseNew
+    [Migration("20221010185342_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,6 +42,32 @@ namespace HotelListing.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Nigeria",
+                            ShortName = "NG"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Ghana",
+                            ShortName = "GH"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Benin",
+                            ShortName = "BJ"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Cameroon",
+                            ShortName = "CM"
+                        });
                 });
 
             modelBuilder.Entity("HotelListing.Domain.Models.Hotel", b =>
@@ -63,22 +89,64 @@ namespace HotelListing.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Ratings")
+                        .HasColumnType("float");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CountryId");
 
                     b.ToTable("Hotels");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Lagos",
+                            CountryId = 1,
+                            Name = "Radisson Bleu Anchorage Hotel",
+                            Ratings = 4.0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Accra",
+                            CountryId = 2,
+                            Name = "Alisa Hotel North Ridge",
+                            Ratings = 4.5
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "Porto-Novo",
+                            CountryId = 3,
+                            Name = "White Horse Hotel Port0-Novo",
+                            Ratings = 4.7000000000000002
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "Douala",
+                            CountryId = 4,
+                            Name = "K Hotel",
+                            Ratings = 4.9000000000000004
+                        });
                 });
 
             modelBuilder.Entity("HotelListing.Domain.Models.Hotel", b =>
                 {
                     b.HasOne("HotelListing.Domain.Models.Country", "Country")
-                        .WithMany()
+                        .WithMany("Hotels")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("HotelListing.Domain.Models.Country", b =>
+                {
+                    b.Navigation("Hotels");
                 });
 #pragma warning restore 612, 618
         }

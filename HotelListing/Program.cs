@@ -17,6 +17,10 @@ using HotelListing.Infrastructure.IRepository;
 
 
 
+
+
+
+
 // Add services to the container.
 
 Log.Logger = new LoggerConfiguration()
@@ -34,10 +38,13 @@ try
     options.UseSqlServer(builder.Configuration.GetConnectionString("Data")));
     builder.Services.AddSingleton(Log.Logger);
     builder.Host.UseSerilog();
-    builder.Services.AddControllers();
-    builder.Services.AddAutoMapper(typeof(MapperInitializer));
+    builder.Services.AddControllers().AddNewtonsoftJson(op =>
+    op.SerializerSettings.ReferenceLoopHandling =
+    Newtonsoft.Json.ReferenceLoopHandling.Ignore);
  
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+    builder.Services.AddAutoMapper(typeof(MapperInitializer));
+    builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen(c =>
     {
